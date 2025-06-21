@@ -21,7 +21,7 @@
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "e2e": "nightwatch",
     "run-e2e": "concurrently -k \"npm start\" \"npm run e2e\"",
-    "server": "babel-node start-server.js",
+    "server": "node server.js",
     "client": "babel-node start-client.js",
     "test": "cross-env NODE_ENV=TEST jest",
     "test-watch": "cross-env NODE_ENV=TEST jest --watch"

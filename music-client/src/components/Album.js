@@ -20,3 +20,5 @@ const Album = ({album, albumsPathname}) => {
         </div>
     )
 }
+
+export default Album;

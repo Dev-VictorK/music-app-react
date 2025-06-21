@@ -1,7 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
 
-import SpotifyClient from './SpotifyClient';
+import SpotifyClient from './SpotifyClient.js';
 
 const app = express();
 
@@ -81,5 +81,10 @@ app.post('/api/login', (req, res) => {
     })
   ), FAKE_DELAY);
 });
+
+app.listen(app.get('port'), () => {
+  console.log(`Find the server at: http://localhost:${app.get('port')}/`); // eslint-disable-line no-console
+});
+
 
 export default app;
