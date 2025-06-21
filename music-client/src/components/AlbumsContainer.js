@@ -5,11 +5,11 @@ import { matchPath, Route, Routes } from "react-router-dom";
 import { client } from '../Client';
 
 const ALBUM_IDS = [
-    '23O4F21GDWiGd33tFN3ZgI',
-    '3AQgdwMNCiN7awXch5fAaG',
-    '1kmyirVya5fRxdjsPFDM05',
-    '6ymZBbRSmzAvoSGmwAFoxm',
-    '4Mw9Gcu1LT7JaipXdwrq1Q',
+    '6Rl6YoCarF2GHPSQmmFjuR',
+    '0fSfkmx0tdPqFYkJuNX74a',
+    '1xyO6rgO44G5BYpljc11l4',
+    '4RpgjxgSxcRwGNuWnImneN',
+    '4vSEAsPqgH8R3thquovbuF',
 ];
 
 class AlbumsContainer extends React.Component {
@@ -19,6 +19,20 @@ class AlbumsContainer extends React.Component {
         albums: [],
     }
 
+    componentDidMount() {
+        this.getAlbums();
+    }
+
+    getAlbums = () => {
+        client.setToken('D6W69PRgCoDKgHZGJmRUNA');
+        client.getAlbums(ALBUM_IDS)
+        .then((albums) => {
+            this.setState({
+                fetched: true,
+                albums: albums,
+            })
+        });
+    };
 
     render() {
         if (!this.state.fetched) {
