@@ -7,8 +7,8 @@ import path from 'path';
 import fs from 'fs';
 
 // Credentials for Spotify
-const SPOTIFY_CLIENT_ID = '6518e61ac2a54a968ad5db5fc9d4806f';
-const SPOTIFY_CLIENT_SECRET = '24492f0774a0437181877887cb68ac9e';
+const SPOTIFY_CLIENT_ID = '20db730ad385476c9b23f40d8c52b40a';
+const SPOTIFY_CLIENT_SECRET = '9946fe35b3b54554bd7da3ed02301a0a';
 const BASE_64_ENCODED_CLIENT_CREDENTIALS = btoa(`${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`)
 
 const getFirstImageUrl = (images) => (

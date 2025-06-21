@@ -1,6 +1,7 @@
 import React from "react";
 import Album from './Album';
 import VerticalMenu from "./VerticalMenu";
+import { matchPath, Route, Routes } from "react-router-dom";
 import { client } from '../Client';
 
 const ALBUM_IDS = [
@@ -35,19 +36,26 @@ class AlbumsContainer extends React.Component {
             return (
                 <div className="grid grid-cols-[250px_1fr] h-full">
                     <div className="bg-gray-100 border-r">
-                        <VerticalMenu/>
+                        <VerticalMenu
+                            albums={this.state.albums} 
+                            albumsPathname={matchPath}/>
                     </div>
                     <div className="p-4 overflow-auto">
-                        {/* 
-                            this.state.albums.map((a) => (
-                                <div
-                                    key={a.id}
-                                    className="bg-white shadow p-4 rounded border hover:bg-gray-50 transition"
-                                >
-                                    <Album album={a} />
-                                </div>
-                            ))
-                        */}
+                        <Routes>
+                            <Route
+                                path='/albums/:albumId'
+                                element={({ match }) => {
+                                    const album = this.state.albums.find(
+                                        (a) => a.id === match.params.albumId
+                                    );
+                                    return (
+                                        <Album
+                                            album={album}
+                                        />
+                                    )
+                                }}
+                            />
+                        </Routes>
                     </div>
 
                 </div>
