@@ -9,7 +9,7 @@ const App = () => {
     <div className='grid grid-rows-[auto_1fr] h-screen'>
       <TopBar />
       <Routes>
-        <Route path='/albums' element={<AlbumsContainer />} />
+        <Route path='/albums/*' element={<AlbumsContainer />} />
       </Routes>
     </div>
   );

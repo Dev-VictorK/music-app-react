@@ -1,0 +1,3 @@
+curl -X POST "https://accounts.spotify.com/api/token" -H "Content-Type: application/x-www-form-urlencoded" -d "grant_type=client_credentials&client_id=20db730ad385476c9b23f40d8c52b40a&client_secret=7c2ab013172a492b8679cb16d8dd89fc"
+
+curl -X GET "https://api.spotify.com/v1/api/albums/?ids=6Rl6YoCarF2GHPSQmmFjuR,&token=BQAcLn1DsQVZgkJaBCD8kwwE7VCokBbdSLdZ9luchoSirX3ZoWJQK6np2a9yChMz4rK7bjF_UhbsyoBm3einVJoIOU4XAS_dKElyZL9zRJ0V1-hxROsWUyBW_2nHSypPHMJseXCajDw" -H "Accept: application/json"

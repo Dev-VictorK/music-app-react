@@ -12,7 +12,7 @@ if (process.env.NODE_ENV !== 'TEST') {
 }
 
 // A fake API token our server validates
-export const API_TOKEN = 'D6W69PRgCoDKgHZGJmRUNA';
+export const API_TOKEN = 'BQCm6xJxv9NLzCyYj149WUSXFzBoo6f2FReoav0BKYRbsd_rujIkmfje-o-KCz22hyRVGhfnXlb7DJdl1BRG6mUGPsCNxrhjf-T4XJsUtc7JS-4-R4WdR38puBOcRe6MJeJo-KhRzCU';
 
 
 const extractToken = (req) => (

@@ -1,7 +1,7 @@
 import React from "react";
-import Album from './Album';
+import AlbumWrapper from "./AlbumWrapper";
 import VerticalMenu from "./VerticalMenu";
-import { matchPath, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { client } from '../Client';
 
 const ALBUM_IDS = [
@@ -24,14 +24,14 @@ class AlbumsContainer extends React.Component {
     }
 
     getAlbums = () => {
-        client.setToken('D6W69PRgCoDKgHZGJmRUNA');
+        client.setToken('BQCm6xJxv9NLzCyYj149WUSXFzBoo6f2FReoav0BKYRbsd_rujIkmfje-o-KCz22hyRVGhfnXlb7DJdl1BRG6mUGPsCNxrhjf-T4XJsUtc7JS-4-R4WdR38puBOcRe6MJeJo-KhRzCU');
         client.getAlbums(ALBUM_IDS)
-        .then((albums) => {
-            this.setState({
-                fetched: true,
-                albums: albums,
-            })
-        });
+            .then((albums) => {
+                this.setState({
+                    fetched: true,
+                    albums: albums,
+                })
+            });
     };
 
     render() {
@@ -51,23 +51,17 @@ class AlbumsContainer extends React.Component {
                 <div className="grid grid-cols-[250px_1fr] h-full">
                     <div className="bg-gray-100 border-r">
                         <VerticalMenu
-                            albums={this.state.albums} 
-                            albumsPathname={matchPath}/>
+                            albums={this.state.albums} />
                     </div>
                     <div className="p-4 overflow-auto">
                         <Routes>
                             <Route
-                                path='/albums/:albumId'
-                                element={({ match }) => {
-                                    const album = this.state.albums.find(
-                                        (a) => a.id === match.params.albumId
-                                    );
-                                    return (
-                                        <Album
-                                            album={album}
-                                        />
-                                    )
-                                }}
+                                path=":albumId"
+                                element={
+                                    <AlbumWrapper
+                                        albums={this.state.albums}
+                                    />
+                                }
                             />
                         </Routes>
                     </div>

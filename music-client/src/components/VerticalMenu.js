@@ -15,30 +15,21 @@ const VerticalMenu = ({ albums }) => {
 
                 <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
                     <h5 className="text-base text-center font-semibold text-gray-500 uppercase dark:text-gray-400">Albums</h5>
-                    {
-                        albums.map((album) => {
-                            return (
-                                <ul class="space-y-2 font-medium">
+                    <ul className="space-y-2 font-medium">
+                        {
+                            albums.map((album) => {
+                                return (
                                     <Link
                                         to={`/albums/${album.id}`}
-                                        className='item'
+                                        className='flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group'
                                         key={album.id}>
-
-                                        <li>
-                                            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                                                <a href="https://flowbite.com/" class="ps-2.5 mb-5">
-                                                    <img src={album.imageUrl} class="h-10 me-3 sm:h-7" alt="Album-Name" />
-                                                </a>
-                                                <span class="self-center font-normal  whitespace-nowrap dark:text-gray-100">{album.name}</span>
-                                            </a>
-                                        </li>
-
+                                        <img src={album.imageUrl} className="h-10 me-3 sm:h-7" alt="Album-Name" />
+                                        <span className="self-center font-normal  whitespace-nowrap dark:text-gray-100">{album.name}</span>
                                     </Link>
-                                </ul>
-                            )
-
-                        })
-                    }
+                                )
+                            })
+                        }
+                    </ul>
                 </div>
             </aside>
         </div>
