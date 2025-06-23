@@ -35,9 +35,9 @@ class AlbumsContainer extends React.Component {
     };
 
     render() {
-        if(!client.isLoggedIn()){
-            return(
-                <Navigate to='/login'/>
+        if (!client.isLoggedIn()) {
+            return (
+                <Navigate to='/login' />
             )
         }
         if (!this.state.fetched) {
@@ -74,7 +74,6 @@ class AlbumsContainer extends React.Component {
                             />
                         </Routes>
                     </div>
-
                 </div>
             )
         }

@@ -3,8 +3,6 @@ import fetch from 'isomorphic-fetch';
 import URI from 'urijs';
 import camelcaseKeys from 'camelcase-keys';
 import btoa from 'btoa';
-import path from 'path';
-import fs from 'fs';
 
 // Credentials for Spotify
 const SPOTIFY_CLIENT_ID = '20db730ad385476c9b23f40d8c52b40a';
@@ -156,9 +154,9 @@ const SpotifyClient = {
 
   getArtistAlbumsDetailed(artistId) {
     return this.getArtistAlbums(artistId)
-             .then((albums) => this.getAlbums(
-               albums.map((a) => a.id)
-             ));
+      .then((albums) => this.getAlbums(
+        albums.map((a) => a.id)
+      ));
   },
 
   getArtistDetailed(artistId) {
@@ -166,7 +164,7 @@ const SpotifyClient = {
       this.getArtist(artistId),
       this.getArtistTopTracks(artistId),
       this.getArtistAlbumsDetailed(artistId),
-    ]).then(([ artist, topTracks, albums ]) => ({
+    ]).then(([artist, topTracks, albums]) => ({
       artist,
       topTracks,
       albums: filterDupes(albums),

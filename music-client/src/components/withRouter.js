@@ -1,5 +1,4 @@
 import { useLocation, useParams, useNavigate } from "react-router-dom";
-import AlbumsContainer from "./AlbumsContainer";
 
 export function withRouter(Component) {
     return function WrapperComponent(props) {
@@ -9,10 +8,10 @@ export function withRouter(Component) {
 
         return (
             <Component
-            {...props}
-            location={location}
-            params={params}
-            navigate={navigate}
+                {...props}
+                location={location}
+                params={params}
+                navigate={navigate}
             />
         );
     };

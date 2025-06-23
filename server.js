@@ -1,6 +1,5 @@
 import express from 'express';
 import morgan from 'morgan';
-import Token from './music-client/src/Token.js';
 
 import SpotifyClient from './SpotifyClient.js';
 

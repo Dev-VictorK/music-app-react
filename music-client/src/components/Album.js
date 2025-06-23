@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {durationToHuman } from '../Helpers';
+import { durationToHuman } from '../Helpers';
 
-const Album = ({ album, albumsPathname }) => {
+const Album = ({ album }) => {
     return (
         <div>
             <a href='#' className='flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700'>
@@ -21,7 +21,6 @@ const Album = ({ album, albumsPathname }) => {
                 </Link>
             </a>
 
-
             <div class='relative overflow-x-hidden shadow-md sm:rounded-lg'>
                 <table class='w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400'>
                     <thead class='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
@@ -32,7 +31,6 @@ const Album = ({ album, albumsPathname }) => {
                             <th scope='col' class='px-6 py-3'>
                                 Duration
                             </th>
-
                         </tr>
                     </thead>
                     <tbody>

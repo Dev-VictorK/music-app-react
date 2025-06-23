@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Routes, Route, Link, Navigate } from "react-router-dom";
-import AlbumsContainer from "./AlbumsContainer";
+import { Navigate } from "react-router-dom";
 import { client } from "../Client";
 
 class Login extends Component {
@@ -20,7 +19,7 @@ class Login extends Component {
         if (this.state.shouldRedirect) {
             return (
                 <div>
-                    <Navigate to="/albums"/>
+                    <Navigate to="/albums" />
                 </div>
             );
         } else {
@@ -46,7 +45,6 @@ class Login extends Component {
                             </div>
                         )
                     }
-
                 </div>
             );
         }

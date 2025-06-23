@@ -31,7 +31,6 @@ const VerticalMenu = ({ albums, albumsPathname }) => {
                         })
                     }
                 </ul>
-
             </aside>
         </div>
     )

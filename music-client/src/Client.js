@@ -31,7 +31,7 @@ class Client {
   }
 
   isLoggedIn() {
-    return !!this.token;
+    return this.token;
   }
 
   subscribe(cb) {
@@ -72,7 +72,7 @@ class Client {
   }
 
   getAlbum(albumId) {
-    return this.getAlbums([ albumId ], albums => albums[0]);
+    return this.getAlbums([albumId], albums => albums[0]);
   }
 
   getAlbums(albumIds) {
