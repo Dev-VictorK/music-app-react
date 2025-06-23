@@ -1,8 +1,10 @@
 import React from "react";
 import AlbumWrapper from "./AlbumWrapper";
 import VerticalMenu from "./VerticalMenu";
-import { Route, Routes } from "react-router-dom";
+import { withRouter } from "./withRouter";
+import { Route, Routes} from "react-router-dom";
 import { client } from '../Client';
+import Token from "../Token";
 
 const ALBUM_IDS = [
     '6Rl6YoCarF2GHPSQmmFjuR',
@@ -24,7 +26,7 @@ class AlbumsContainer extends React.Component {
     }
 
     getAlbums = () => {
-        client.setToken('BQCm6xJxv9NLzCyYj149WUSXFzBoo6f2FReoav0BKYRbsd_rujIkmfje-o-KCz22hyRVGhfnXlb7DJdl1BRG6mUGPsCNxrhjf-T4XJsUtc7JS-4-R4WdR38puBOcRe6MJeJo-KhRzCU');
+        client.setToken(Token);
         client.getAlbums(ALBUM_IDS)
             .then((albums) => {
                 this.setState({
@@ -47,11 +49,14 @@ class AlbumsContainer extends React.Component {
                 </div>
             )
         } else {
+            const matchPath = this.props.location.pathname;
+            console.log(matchPath);
             return (
                 <div className="grid grid-cols-[250px_1fr] h-full">
                     <div className="bg-gray-100 border-r">
                         <VerticalMenu
-                            albums={this.state.albums} />
+                            albums={this.state.albums}
+                            albumsPathname={matchPath} />
                     </div>
                     <div className="p-4 overflow-auto">
                         <Routes>
@@ -72,4 +77,4 @@ class AlbumsContainer extends React.Component {
     }
 }
 
-export default AlbumsContainer;
+export default withRouter(AlbumsContainer);
