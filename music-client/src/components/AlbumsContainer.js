@@ -2,7 +2,7 @@ import React from "react";
 import AlbumWrapper from "./AlbumWrapper";
 import VerticalMenu from "./VerticalMenu";
 import { withRouter } from "./withRouter";
-import { Route, Routes} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { client } from '../Client';
 import Token from "../Token";
 
@@ -52,13 +52,14 @@ class AlbumsContainer extends React.Component {
             const matchPath = this.props.location.pathname;
             console.log(matchPath);
             return (
-                <div className="grid grid-cols-[250px_1fr] h-full">
-                    <div className="bg-gray-100 border-r">
+                <div className="flex pt-16 h-screen">
+                    <aside className="w-64 bg-gray-100 border-r overflow-y-hidden overflow-x-hidden fixed top-16 left-0 bottom-0">
                         <VerticalMenu
                             albums={this.state.albums}
                             albumsPathname={matchPath} />
-                    </div>
-                    <div className="p-4 overflow-auto">
+                    </aside>
+
+                    <div className="ml-64 flex-1 overflow-y-auto  overflow-x-hidden scrollbar-hidden p-4">
                         <Routes>
                             <Route
                                 path=":albumId"

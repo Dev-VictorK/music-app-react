@@ -3,7 +3,7 @@ import React from 'react';
 class TopBar extends React.Component {
     render() {
         return (
-            <nav className="bg-white dark:bg-gray-900 w-full z-20 border-b border-gray-200 dark:border-gray-600">
+            <nav className="fixed top-0 left-0 right-0 bg-white dark:bg-gray-900 z-40 h-16 border-b border-gray-200 dark:border-gray-600">
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                     <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSZzTpH651z7Wx2TnWtGnXuSRvOsGwENMiQA&s" className="h-8" alt="Flowbite Logo" />

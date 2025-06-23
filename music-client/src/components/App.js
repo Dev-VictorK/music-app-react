@@ -6,7 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 
 const App = () => {
   return (
-    <div className='grid grid-rows-[auto_1fr] h-screen'>
+    <div className='overflow-hidden h-screen'>
       <TopBar />
       <Routes>
         <Route path='/albums/*' element={<AlbumsContainer />} />
