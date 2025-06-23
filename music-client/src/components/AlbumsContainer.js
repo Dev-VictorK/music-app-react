@@ -2,9 +2,8 @@ import React from "react";
 import AlbumWrapper from "./AlbumWrapper";
 import VerticalMenu from "./VerticalMenu";
 import { withRouter } from "./withRouter";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { client } from '../Client';
-import Token from "../Token";
 
 const ALBUM_IDS = [
     '6Rl6YoCarF2GHPSQmmFjuR',
@@ -26,7 +25,6 @@ class AlbumsContainer extends React.Component {
     }
 
     getAlbums = () => {
-        client.setToken(Token);
         client.getAlbums(ALBUM_IDS)
             .then((albums) => {
                 this.setState({
@@ -37,6 +35,11 @@ class AlbumsContainer extends React.Component {
     };
 
     render() {
+        if(!client.isLoggedIn()){
+            return(
+                <Navigate to='/login'/>
+            )
+        }
         if (!this.state.fetched) {
             return (
                 <div className="flex items-start justify-center">

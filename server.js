@@ -13,7 +13,7 @@ if (process.env.NODE_ENV !== 'TEST') {
 }
 
 // A fake API token our server validates
-export const API_TOKEN = Token;
+export const API_TOKEN = 'BQB03nT4j76U220FuxUY-Haq-qHWKireW6OvirFNdFLk5fI5U-is9U0Wbc9xvvuGHpBJzP9IwJb2TKsffl2lU918g5SjaEjbJAy3gPqvAn1dvjBivYMx_BHHFmvKcE7c-HgruvpoVeA';
 
 
 const extractToken = (req) => (
@@ -73,7 +73,7 @@ app.get('/api/albums', authenticatedRoute, (req, res) => {
 
 // Make things more noticeable in the UI by introducing a fake delay
 // to logins
-const FAKE_DELAY = 500; // ms
+const FAKE_DELAY = 2000; // ms
 app.post('/api/login', (req, res) => {
   setTimeout(() => (
     res.json({
