@@ -1,28 +1,22 @@
 const SpotifyClient = require('./SpotifyClient');
 
-const API_TOKEN = 'BQB03nT4j76U220FuxUY-Haq-qHWKireW6OvirFNdFLk5fI5U-is9U0Wbc9xvvuGHpBJzP9IwJb2TKsffl2lU918g5SjaEjbJAy3gPqvAn1dvjBivYMx_BHHFmvKcE7c-HgruvpoVeA';
+const API_TOKEN = 'your_token_here';
 
-export async function handler(event, context) {
+exports.handler = async function(event, context) {
   const token = event.queryStringParameters.token;
   const idsParam = event.queryStringParameters.ids;
 
   if (!token || token !== API_TOKEN) {
     return {
       statusCode: 403,
-      body: JSON.stringify({
-        success: false,
-        error: 'Invalid or missing token'
-      }),
+      body: JSON.stringify({ success: false, error: 'Invalid or missing token' }),
     };
   }
 
   if (!idsParam) {
     return {
       statusCode: 400,
-      body: JSON.stringify({
-        success: false,
-        error: 'Missing ids query parameter',
-      }),
+      body: JSON.stringify({ success: false, error: 'Missing ids query parameter' }),
     };
   }
 
@@ -44,4 +38,4 @@ export async function handler(event, context) {
       }),
     };
   }
-}
+};
