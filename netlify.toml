@@ -1,0 +1,7 @@
+[build]
+  base = "music-client"
+  publish = "music-client/dist"     # or "build" if you're using CRA
+  command = "npm run build"
+
+[functions]
+  directory = "netlify/functions"
