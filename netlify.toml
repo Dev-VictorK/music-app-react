@@ -1,7 +1,5 @@
 [build]
   base = "music-client"
-  publish = "music-client/dist"     # or "build" if you're using CRA
   command = "npm run build"
-
-[functions]
-  directory = "netlify/functions"
+  publish = "dist"  # ✅ This is the correct relative path inside "music-client"
+  functions = "../netlify/functions"  # If your functions are outside "music-client"
