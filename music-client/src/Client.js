@@ -90,7 +90,7 @@ class Client {
   }
 
   login() {
-    return fetch('/.netlify/functions/', {
+    return fetch('/.netlify/functions/login', {
       method: 'post',
       headers: {
         accept: 'application/json',
