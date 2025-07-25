@@ -7,12 +7,12 @@ class TopBar extends React.Component {
         return (
             <nav className="fixed top-0 left-0 right-0 bg-white dark:bg-gray-900 z-40 h-16 border-b border-gray-200 dark:border-gray-600">
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                    <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
+                    <button className="flex items-center space-x-3 rtl:space-x-reverse">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSZzTpH651z7Wx2TnWtGnXuSRvOsGwENMiQA&s" className="h-8" alt="Flowbite Logo" />
                         <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white text-green-600">
                             Music App
                         </span>
-                    </a>
+                    </button>
                     <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                         {
                             loggedIn ? (
