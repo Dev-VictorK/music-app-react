@@ -1,20 +1,18 @@
 /* eslint-disable prefer-template, new-cap */
-import fetch from 'isomorphic-fetch';
-import URI from 'urijs';
-import camelcaseKeys from 'camelcase-keys';
-import btoa from 'btoa';
+const fetch = require('isomorphic-fetch');
+const URI = require('urijs');
+const camelcaseKeys = require('camelcase-keys');
+const btoa = require('btoa');
 
 // Credentials for Spotify
 const SPOTIFY_CLIENT_ID = '20db730ad385476c9b23f40d8c52b40a';
 const SPOTIFY_CLIENT_SECRET = '7c2ab013172a492b8679cb16d8dd89fc';
-const BASE_64_ENCODED_CLIENT_CREDENTIALS = btoa(`${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`)
+const BASE_64_ENCODED_CLIENT_CREDENTIALS = btoa(`${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`);
 
 const getFirstImageUrl = (images) => (
   images && images[0] && images[0].url
 );
 
-// Makes the artist page more interesting by removing albums that are dupes
-// like deluxe editions, remasters, etc.
 const filterDupes = (albums) => (
   albums.reduce((memo, album) => {
     if (!memo.find((m) => m.name === album.name)) {
@@ -75,7 +73,6 @@ function parseTrack(track) {
 const SPOTIFY_BASE_URI = 'https://api.spotify.com/v1';
 
 const SpotifyClient = {
-
   _getWithToken(url, token) {
     return fetch(url, {
       method: 'get',
@@ -83,18 +80,17 @@ const SpotifyClient = {
         Accept: 'application/json',
         Authorization: `Bearer ${token}`,
       },
-    }).then(checkStatus)
+    })
+      .then(checkStatus)
       .then(parseJson)
       .then((data) => camelcaseKeys(data, { deep: true }));
   },
 
   _get(url) {
     if (this.token) {
-      return this._getWithToken(url, this.token)
+      return this._getWithToken(url, this.token);
     } else {
-      return this._getApiToken().then((token) => (
-        this._getWithToken(url, token)
-      ));
+      return this._getApiToken().then((token) => this._getWithToken(url, token));
     }
   },
 
@@ -105,58 +101,41 @@ const SpotifyClient = {
       headers: {
         Authorization: `Basic ${BASE_64_ENCODED_CLIENT_CREDENTIALS}`,
         'Content-Type': 'application/x-www-form-urlencoded',
-      }
-    }).then(checkStatus)
+      },
+    })
+      .then(checkStatus)
       .then(parseJson)
-      .then((json) => json.access_token)
-      .then((token) => this.token = token)
+      .then((json) => (this.token = json.access_token));
   },
 
   getAlbum(albumId) {
-    return this._get(
-      SPOTIFY_BASE_URI + '/albums/' + albumId
-    ).then((data) => parseAlbum(data));
+    return this._get(`${SPOTIFY_BASE_URI}/albums/${albumId}`).then((data) => parseAlbum(data));
   },
 
   getAlbums(albumIds) {
-    return this._get(
-      SPOTIFY_BASE_URI + '/albums?ids=' + albumIds.join(',')
-    ).then((data) => (
+    return this._get(`${SPOTIFY_BASE_URI}/albums?ids=${albumIds.join(',')}`).then((data) =>
       data.albums.map((a) => parseAlbum(a))
-    ));
+    );
   },
 
   getArtist(artistId) {
-    return this._get(
-      SPOTIFY_BASE_URI + '/artists/' + artistId
-    ).then((data) => parseArtist(data));
+    return this._get(`${SPOTIFY_BASE_URI}/artists/${artistId}`).then((data) => parseArtist(data));
   },
 
   getArtistTopTracks(artistId) {
-    const url = URI(
-      SPOTIFY_BASE_URI + '/artists/' + artistId + '/top-tracks'
-    ).query({ country: 'us' });
-
-    return this._get(url).then((data) => (
-      data.tracks.map((t) => parseTrack(t))
-    ));
+    const url = URI(`${SPOTIFY_BASE_URI}/artists/${artistId}/top-tracks`).query({ country: 'us' });
+    return this._get(url).then((data) => data.tracks.map((t) => parseTrack(t)));
   },
 
   getArtistAlbums(artistId) {
-    const url = (
-      SPOTIFY_BASE_URI + '/artists/' + artistId + '/albums?album_type=album'
-    );
-
-    return this._get(url).then((data) => (
-      data.items.map((a) => parseAlbum(a))
-    ));
+    const url = `${SPOTIFY_BASE_URI}/artists/${artistId}/albums?album_type=album`;
+    return this._get(url).then((data) => data.items.map((a) => parseAlbum(a)));
   },
 
   getArtistAlbumsDetailed(artistId) {
-    return this.getArtistAlbums(artistId)
-      .then((albums) => this.getAlbums(
-        albums.map((a) => a.id)
-      ));
+    return this.getArtistAlbums(artistId).then((albums) =>
+      this.getAlbums(albums.map((a) => a.id))
+    );
   },
 
   getArtistDetailed(artistId) {
@@ -170,6 +149,6 @@ const SpotifyClient = {
       albums: filterDupes(albums),
     }));
   },
-}
+};
 
-export default SpotifyClient;
+module.exports = SpotifyClient;
