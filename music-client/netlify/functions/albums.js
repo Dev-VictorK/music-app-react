@@ -1,4 +1,4 @@
-import SpotifyClient from './SpotifyClient.mjs';
+import SpotifyClient from './SpotifyClient.js';
 
 const API_TOKEN = 'BQB03nT4j76U220FuxUY-Haq-qHWKireW6OvirFNdFLk5fI5U-is9U0Wbc9xvvuGHpBJzP9IwJb2TKsffl2lU918g5SjaEjbJAy3gPqvAn1dvjBivYMx_BHHFmvKcE7c-HgruvpoVeA';
 
