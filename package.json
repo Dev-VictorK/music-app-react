@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "private": "true",
+  "type":"module",
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.10",
     "babel-cli": "6.26.0",

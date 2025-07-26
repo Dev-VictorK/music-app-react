@@ -1,8 +1,8 @@
 /* eslint-disable prefer-template, new-cap */
-const fetch = require('isomorphic-fetch');
-const URI = require('urijs');
-const camelcaseKeys = require('camelcase-keys');
-const btoa = require('btoa');
+import URI from 'urijs';
+import camelcaseKeys from 'camelcase-keys';
+import btoa from 'btoa';
+import fetch from 'isomorphic-fetch';
 
 // Credentials for Spotify
 const SPOTIFY_CLIENT_ID = '20db730ad385476c9b23f40d8c52b40a';
