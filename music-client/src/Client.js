@@ -89,16 +89,21 @@ class Client {
       .then(this.parseJson);
   }
 
-  login() {
-    return fetch('./netlify/functions/login', {
-      method: 'post',
-      headers: {
-        accept: 'application/json',
-      },
-    }).then(this.checkStatus)
-      .then(this.parseJson)
-      .then((json) => this.setToken(json.token));
-  }
+login() {
+  return fetch('./netlify/functions/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify({
+      token: 'BQB03nT4j76U220FuxUY-Haq-qHWKireW6OvirFNdFLk5fI5U-is9U0Wbc9xvvuGHpBJzP9IwJb2TKsffl2lU918g5SjaEjbJAy3gPqvAn1dvjBivYMx_BHHFmvKcE7c-HgruvpoVeA',
+    }),
+  })
+    .then(this.checkStatus)
+    .then(this.parseJson)
+    .then((json) => this.setToken(json.token));
+}
 
   logout() {
     this.removeToken();
