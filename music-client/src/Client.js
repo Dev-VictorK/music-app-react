@@ -60,7 +60,7 @@ class Client {
 
   isTokenValid() {
     // See note about tokens above
-    const url = './netlify/functions/check_token?token=' + this.token;
+    const url = '/.netlify/functions/check_token?token=' + this.token;
     return fetch(url, {
       method: 'get',
       headers: {
@@ -78,7 +78,7 @@ class Client {
   getAlbums(albumIds) {
     // See note about tokens above
     const url = (
-      './netlify/functions/albums?ids=' + albumIds.join(',') + '&token=' + this.token
+      '/.netlify/functions/albums?ids=' + albumIds.join(',') + '&token=' + this.token
     );
     return fetch(url, {
       method: 'get',
@@ -90,7 +90,7 @@ class Client {
   }
 
 login() {
-  return fetch('./netlify/functions/login', {
+  return fetch('/.netlify/functions/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
