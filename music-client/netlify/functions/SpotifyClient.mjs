@@ -151,4 +151,4 @@ const SpotifyClient = {
   },
 };
 
-module.exports = SpotifyClient;
+export default SpotifyClient;
